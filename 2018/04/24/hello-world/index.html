@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>&lt;&lt;推荐系统实践&gt;&gt;学习笔记 | Jamming blog</title>
+  <title>&lt;&lt;推荐系统实践&gt;&gt;核心算法简介 | Jamming blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Recommendation1.推荐系统介绍随着互联网时代的兴起，各种与人们生活息息相关的商品和信息呈现爆炸式的增长。每天在互联网产生的信息不计其数，人们面临着严重的信息的过载，即使搜素引擎可以帮助人们在海量的信息中得到自己想要的信息，但是搜索引擎也只是能满足人们的显性需求（就是用户知道自己想要什么），但是在另一方面，人们对信息和商品也存在这隐形需求（就是用户不知道自己可能会喜欢，或者想要的东西）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="&lt;&lt;推荐系统实践&gt;&gt;学习笔记">
+<meta property="og:title" content="&lt;&lt;推荐系统实践&gt;&gt;核心算法简介">
 <meta property="og:url" content="http://yoursite.com/2018/04/24/hello-world/index.html">
 <meta property="og:site_name" content="Jamming blog">
 <meta property="og:description" content="Recommendation1.推荐系统介绍随着互联网时代的兴起，各种与人们生活息息相关的商品和信息呈现爆炸式的增长。每天在互联网产生的信息不计其数，人们面临着严重的信息的过载，即使搜素引擎可以帮助人们在海量的信息中得到自己想要的信息，但是搜索引擎也只是能满足人们的显性需求（就是用户知道自己想要什么），但是在另一方面，人们对信息和商品也存在这隐形需求（就是用户不知道自己可能会喜欢，或者想要的东西）">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-28T08:37:14.844Z">
+<meta property="og:image" content="http://yoursite.com/images/insert_image.jpg">
+<meta property="og:updated_time" content="2018-05-02T01:13:36.380Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="&lt;&lt;推荐系统实践&gt;&gt;学习笔记">
+<meta name="twitter:title" content="&lt;&lt;推荐系统实践&gt;&gt;核心算法简介">
 <meta name="twitter:description" content="Recommendation1.推荐系统介绍随着互联网时代的兴起，各种与人们生活息息相关的商品和信息呈现爆炸式的增长。每天在互联网产生的信息不计其数，人们面临着严重的信息的过载，即使搜素引擎可以帮助人们在海量的信息中得到自己想要的信息，但是搜索引擎也只是能满足人们的显性需求（就是用户知道自己想要什么），但是在另一方面，人们对信息和商品也存在这隐形需求（就是用户不知道自己可能会喜欢，或者想要的东西）">
+<meta name="twitter:image" content="http://yoursite.com/images/insert_image.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Jamming blog" type="application/atom+xml">
   
@@ -85,12 +87,6 @@
 				
 					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 					<a class="mail" target="_blank" href="/gaojiaming24@163.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
@@ -130,12 +126,6 @@
 					
 						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
 						<a class="mail" target="_blank" href="/gaojiaming24@163.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
@@ -169,7 +159,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      &lt;&lt;推荐系统实践&gt;&gt;学习笔记
+      &lt;&lt;推荐系统实践&gt;&gt;核心算法简介
     </h1>
   
 
@@ -182,9 +172,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Recommendation"><a href="#Recommendation" class="headerlink" title="Recommendation"></a>Recommendation</h2><h1 id="1-推荐系统介绍"><a href="#1-推荐系统介绍" class="headerlink" title="1.推荐系统介绍"></a>1.推荐系统介绍</h1><p>随着互联网时代的兴起，各种与人们生活息息相关的商品和信息呈现爆炸式的增长。每天在互联网产生的信息不计其数，人们面临着严重的信息的过载，即使搜素引擎可以帮助人们在海量的信息中得到自己想要的信息，但是搜索引擎也只是能满足人们的显性需求（就是用户知道自己想要什么），但是在另一方面，人们对信息和商品也存在这隐形需求（就是用户不知道自己可能会喜欢，或者想要的东西）。这部分需求无法通过搜索引擎来满足，于是搜索引擎的孪生兄弟推荐引擎应运而生，推荐引擎旨在帮助用户发现自己潜在感兴趣或者喜欢信息和商品。在推荐引擎方面行动最早，研究最深也是在电商领域（比如亚马逊）和新闻领域（比如今日头条）。精准的个性化推荐系统能挖掘出用户潜在的购买欲望，帮助电商平台卖出更多的商品，并最终转化为可观的利润。</p>
-<h1 id="2-推荐系统的核心算法一-：基于邻域的算法"><a href="#2-推荐系统的核心算法一-：基于邻域的算法" class="headerlink" title="2.推荐系统的核心算法一 ：基于邻域的算法"></a>2.推荐系统的核心算法一 ：基于邻域的算法</h1><p>基于邻域的算法是推荐系统中最基本的算法，该算法不仅在学术界有深入的研究，而且在工业界也得到了广泛的应用。基于邻域的算法分为两大类，一类是基于用户的协同过滤算法，简称UserCF；另一类是基于物品（项）的协同过滤算法，简称ItemCF。看到这里，你可能会感到疑惑，为什么推荐系统的基础算法带有“协同”和“过滤”两个词，基于用户的协同过滤算法作为推荐系统中最古老的算法，在1992被提出，最初是被用在邮件过滤系统，1994年被GroupLens用于新闻过滤，之后才被用在推荐系统当中，这就是名字当中为什么带有“过滤”一词的原因。</p>
-<h2 id="2-1基于用户的协同过滤算法"><a href="#2-1基于用户的协同过滤算法" class="headerlink" title="2.1基于用户的协同过滤算法"></a>2.1基于用户的协同过滤算法</h2><p>基于用户的协同过滤算法核心思想类似一句俗语：物以类聚，人以群分。通过大量的用户行为日志来计算用户与用户之间的相似性。例如用户A买了三本书：《机器学习》，《信息检索导论》，《统计学习方法》，而用户B也买了三本书：《信息检索导论》，《统计学习方法》，由于用户A与用户B之间购买行为当中有两本书是相同的，所以我们认为用户A和用户B具有较高的相似度，那么A喜欢的书用户B也有可能喜欢，所以在用户B的推荐列表里面可以把《机器学习》添加进去。<br>从上面的描述中可以看到，基于用户的协同过滤算法包括两个步骤：<br>(1)找到和目标用户兴趣相似的用户；<br>(2)找到这个集合中用户喜欢，但是目标用户没有购买并且浏览过的物品；</p>
+        <h2 id="Recommendation"><a href="#Recommendation" class="headerlink" title="Recommendation"></a>Recommendation</h2><h1 id="1-推荐系统介绍"><a href="#1-推荐系统介绍" class="headerlink" title="1.推荐系统介绍"></a>1.推荐系统介绍</h1><p>随着互联网时代的兴起，各种与人们生活息息相关的商品和信息呈现爆炸式的增长。每天在互联网产生的信息不计其数，人们面临着严重的信息的过载，即使搜素引擎可以帮助人们在海量的信息中得到自己想要的信息，但是搜索引擎也只是能满足人们的显性需求（就是用户知道自己想要什么），但是在另一方面，人们对信息和商品也存在这隐形需求（就是用户不知道自己可能会喜欢，或者想要的东西）。这部分需求无法通过搜索引擎来满足，于是搜索引擎的孪生兄弟推荐引擎应运而生，推荐引擎旨在帮助用户发现自己潜在感兴趣或者喜欢信息和商品。推荐系统的本质是通过一定的方式将用户和物品联系起来。在推荐引擎方面行动最早，研究最深也是在电商领域（比如亚马逊）和新闻领域（比如今日头条）。精准的个性化推荐系统能挖掘出用户潜在的购买欲望，帮助电商平台卖出更多的商品，并最终转化为可观的利润。</p>
+<h1 id="2-推荐系统的核心算法一-：基于邻域的算法"><a href="#2-推荐系统的核心算法一-：基于邻域的算法" class="headerlink" title="2.推荐系统的核心算法一 ：基于邻域的算法"></a>2.推荐系统的核心算法一 ：基于邻域的算法</h1><p>基于邻域的算法是推荐系统中最基本的算法，该算法不仅在学术界有深入的研究，而且在工业界也得到了广泛的应用。基于邻域的算法分为两大类，一类是基于用户的协同过滤算法，简称UserCF；另一类是基于物品（项）的协同过滤算法，简称ItemCF。看到这里，你可能会感到疑惑，为什么推荐系统的基础算法带有“协同”和“过滤”两个词？基于用户的协同过滤算法作为推荐系统中最古老的算法，在1992被提出，最初是被用在邮件过滤系统，1994年被GroupLens用于新闻过滤，之后才被用在推荐系统当中，也就是说，协同过滤算法最开始起源于过滤系统，这就是名字当中为什么带有“过滤”一词的原因。</p>
+<h2 id="2-1基于用户的协同过滤算法"><a href="#2-1基于用户的协同过滤算法" class="headerlink" title="2.1基于用户的协同过滤算法"></a>2.1基于用户的协同过滤算法</h2><p>基于用户的协同过滤算法核心思想类似一句俗语：物以类聚，人以群分。推荐引擎通过大量的用户行为日志来计算用户与用户之间的相似性。举例说明，例如用户A买了三本书：《机器学习》，《信息检索导论》，《统计学习方法》，而用户B也买了三本书：《信息检索导论》，《统计学习方法》，《计算机组成原理》由于用户A与用户B之间购买行为当中有两本书是相同的，《信息检索导论》和《统计学习方法》，所以我们暂且认为用户A和用户B具有较高的相似度（在实际算法实现中，计算用户相似度的方法很多），那么用户A喜欢的书用户B也有可能喜欢，所以在用户B的推荐列表里面可以把《机器学习》添加进去。<br>从上面的描述中可以看到，基于用户的协同过滤算法包括两个步骤：<br>(1)找到和目标用户兴趣相似的用户；<br>(2)找到这个集合中用户喜欢，但是目标用户没有购买并且浏览过的物品；</p>
+<p>###2.1.1计算用户之间的相似度<br>协同过滤算法主要是通过用户的行为计算用户之间的兴趣相似度。给定用户<em>u</em>和用户<em>v</em>，令<em>N(u)</em>表示用户<em>u</em>曾经购买过商品，令<em>N(v)</em>表示用户<em>v</em>曾经购买过商品。那么。我们可以通过计算<em>Jaccard</em>系数来简单的表示用户<em>u</em>和用户<em>v</em>之间的兴趣相似度：<br>         $$ W_{<em>uv</em>}= frac{|N(u)\bigcapN(v)|}{|N(u)\bigcupN(v)|}$$</p>
+<p><img src="/images/insert_image.jpg" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>表头1</th>
+<th style="text-align:left">表头2</th>
+<th style="text-align:center">表头3</th>
+<th style="text-align:right">表头4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认左对齐</td>
+<td style="text-align:left">左对齐</td>
+<td style="text-align:center">居中对其</td>
+<td style="text-align:right">右对齐</td>
+</tr>
+<tr>
+<td>默认左对齐</td>
+<td style="text-align:left">左对齐</td>
+<td style="text-align:center">居中对其</td>
+<td style="text-align:right">右对齐</td>
+</tr>
+<tr>
+<td>默认左对齐</td>
+<td style="text-align:left">左对齐</td>
+<td style="text-align:center">居中对其</td>
+<td style="text-align:right">右对齐</td>
+</tr>
+</tbody>
+</table>
 
       
 
