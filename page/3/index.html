@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/4 | Jamming blog</title>
+  <title>Jamming blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Jamming blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/04/index.html">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="Jamming blog">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -142,47 +142,75 @@
           <div id="js-content" class="content-ll">
             
   
-  
+    <article id="post-recong" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/24/推荐算法介绍/" class="archive-article-date">
-  	<time datetime="2018-04-24T04:08:06.541Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/24/推荐算法介绍/">&lt;&lt;推荐系统实践&gt;&gt;核心算法简介</a>
+      <a class="article-title" href="/2018/05/02/recong/">hexo验证问题</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2018/05/02/recong/" class="archive-article-date">
+  	<time datetime="2018-05-02T09:08:55.781Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="在用hexo部署到GitHub上时，第一次部署会遇到无法访问的问题"><a href="#在用hexo部署到GitHub上时，第一次部署会遇到无法访问的问题" class="headerlink" title="在用hexo部署到GitHub上时，第一次部署会遇到无法访问的问题"></a>在用hexo部署到GitHub上时，第一次部署会遇到无法访问的问题</h1><p>fatal: unable to access ‘<a href="https://github.com/*/*.github.io.git/&#39;" target="_blank" rel="noopener">https://github.com/*/*.github.io.git/&#39;</a>: Failed to connect to github.com port 443: Timed out<br>FATAL Something’s wrong. Maybe you can find the solution here: <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">http://hexo.io/docs/troubleshooting.html</a><br>Error: fatal: unable to access ‘<a href="https://github.com/*/*.github.io.git/&#39;" target="_blank" rel="noopener">https://github.com/*/*.github.io.git/&#39;</a>: Failed to connect to github.com port 443: Timed out</p>
+<h1 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h1><p>将hexo配置文件——config.yml中deploy》repo更改为<br>https://用户名:密码@github.com/pythonsoft/test.git然后就可以了。<br>用户名不是登陆账号名， 是github的用户名</p>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/02/recong/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    </nav>
+  
 
 
           </div>
@@ -204,9 +232,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
