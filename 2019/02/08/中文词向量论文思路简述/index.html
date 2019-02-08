@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>中文词向量论文思路简述 | Jamming blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="中文词向量论文思路简述一、中文词向量论文baseline以及评价指标最近在做中文词向量的研究，阅读了9篇关于中文词向量的论文，并且对这9篇论文的核心思路，训练数据，评价指标，baseline，发表年份，作者单位做了统计和整理，于是写下此篇博文，作为对这一阶段的学习成果的总结。    论文标题 发表年份 作者单位 发表在期刊或者会议 baseline 评价指标以及数据 训练数据     Compon">
+  <meta name="description" content="中文词向量论文思路简述一、中文词向量论文baseline以及评价指标最近在做中文词向量的研究，阅读了9篇关于中文词向量的论文，并且对这9篇论文的核心思路，训练数据，评价指标，baseline，发表年份，作者单位做了统计和整理，于是写下此篇博文，作为对这一阶段的学习成果的总结。    论文标题 发表年份 作者单位 发表在期刊或者会议 baseline 评价指标以及数据     Component-E">
 <meta property="og:type" content="article">
 <meta property="og:title" content="中文词向量论文思路简述">
 <meta property="og:url" content="http://yoursite.com/2019/02/08/中文词向量论文思路简述/index.html">
 <meta property="og:site_name" content="Jamming blog">
-<meta property="og:description" content="中文词向量论文思路简述一、中文词向量论文baseline以及评价指标最近在做中文词向量的研究，阅读了9篇关于中文词向量的论文，并且对这9篇论文的核心思路，训练数据，评价指标，baseline，发表年份，作者单位做了统计和整理，于是写下此篇博文，作为对这一阶段的学习成果的总结。    论文标题 发表年份 作者单位 发表在期刊或者会议 baseline 评价指标以及数据 训练数据     Compon">
+<meta property="og:description" content="中文词向量论文思路简述一、中文词向量论文baseline以及评价指标最近在做中文词向量的研究，阅读了9篇关于中文词向量的论文，并且对这9篇论文的核心思路，训练数据，评价指标，baseline，发表年份，作者单位做了统计和整理，于是写下此篇博文，作为对这一阶段的学习成果的总结。    论文标题 发表年份 作者单位 发表在期刊或者会议 baseline 评价指标以及数据     Component-E">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.imgur.com/jqv97Ct.png">
 <meta property="og:image" content="https://i.imgur.com/cW3y0Jw.png">
@@ -28,10 +28,10 @@
 <meta property="og:image" content="https://i.imgur.com/xrKo6Rs.png">
 <meta property="og:image" content="https://i.imgur.com/ze8AhXZ.png">
 <meta property="og:image" content="https://i.imgur.com/dwVT7gd.png">
-<meta property="og:updated_time" content="2019-02-08T12:35:26.843Z">
+<meta property="og:updated_time" content="2019-02-08T12:46:06.238Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中文词向量论文思路简述">
-<meta name="twitter:description" content="中文词向量论文思路简述一、中文词向量论文baseline以及评价指标最近在做中文词向量的研究，阅读了9篇关于中文词向量的论文，并且对这9篇论文的核心思路，训练数据，评价指标，baseline，发表年份，作者单位做了统计和整理，于是写下此篇博文，作为对这一阶段的学习成果的总结。    论文标题 发表年份 作者单位 发表在期刊或者会议 baseline 评价指标以及数据 训练数据     Compon">
+<meta name="twitter:description" content="中文词向量论文思路简述一、中文词向量论文baseline以及评价指标最近在做中文词向量的研究，阅读了9篇关于中文词向量的论文，并且对这9篇论文的核心思路，训练数据，评价指标，baseline，发表年份，作者单位做了统计和整理，于是写下此篇博文，作为对这一阶段的学习成果的总结。    论文标题 发表年份 作者单位 发表在期刊或者会议 baseline 评价指标以及数据     Component-E">
 <meta name="twitter:image" content="https://i.imgur.com/jqv97Ct.png">
   
     <link rel="alternative" href="/atom.xml" title="Jamming blog" type="application/atom+xml">
@@ -188,7 +188,6 @@
 <th>发表在期刊或者会议</th>
 <th>baseline</th>
 <th>评价指标以及数据</th>
-<th>训练数据</th>
 </tr>
 </thead>
 <tbody>
@@ -199,7 +198,6 @@
 <td>发表于EMNLP</td>
 <td>Word2Vector（CBOW和SkipGram）</td>
 <td>Word Similarity（哈工大的E-TC）和Text Classification（腾讯新闻数据）</td>
-<td>Chinese Wikipedia Dump</td>
 </tr>
 <tr>
 <td>Joint Learning of Character and Word Embeddings（CWE）</td>
@@ -208,7 +206,6 @@
 <td>发表于IJCAI2015</td>
 <td>CBOW，Skipgram和Glove</td>
 <td>Word Similarity（wordsim-240 and wordsim-296）和Analogical Reasoning（清华大学人工创建的）</td>
-<td>The People’s Daily</td>
 </tr>
 <tr>
 <td>Improve Chinese Word Embeddings by Exploiting Internal Structure（SCWE）</td>
@@ -217,7 +214,6 @@
 <td>NAACL-HLT</td>
 <td>CBOW和CWE</td>
 <td>Word Similarity（wordsim-240 and wordsim-296）and Text Classification（Fudan Corpus）</td>
-<td>Chinese Wikipedia Dump and English Wikipedia Dump</td>
 </tr>
 <tr>
 <td>Multi-Granularity Chinese Word Embedding（MGE）</td>
@@ -226,7 +222,6 @@
 <td>EMNLP</td>
 <td>CBOW和CWE</td>
 <td>Word Similarity（wordsim-240 and wordsim-296）and Analogical Reasoning（Chen et al 2015），case study</td>
-<td>Chinese Wikipedia Dump</td>
 </tr>
 <tr>
 <td>Learning Chinese Word Representations From Glyphs Of Characters(GWE)</td>
@@ -235,7 +230,6 @@
 <td>EMNLP</td>
 <td>CBOW，Skipgram和CWE</td>
 <td>Word Similarity（wordsim-240 and wordsim-296 and SL-999）and Analogical Reasoning（Chen et al 2015），case study</td>
-<td>Central News Agency daily Newspaper（1991-2002）</td>
 </tr>
 <tr>
 <td>Joint Embeddings of Chinese Words, Characters, and Fine-grained Subcharacter Components（JWE）</td>
@@ -244,7 +238,6 @@
 <td>EMNLP</td>
 <td>CBOW，CWE和MGE</td>
 <td>Word Similarity（wordsim-240 and wordsim-296）and Analogical Reasoning（Chen et al 2015），case study</td>
-<td>Chinese Wikipedia Dump and HTTPCN</td>
 </tr>
 <tr>
 <td>Enriching Word Vectors with Subword Information</td>
@@ -253,7 +246,6 @@
 <td>ACL</td>
 <td>CBOW和skipgram</td>
 <td>Word Similarity（多国语言数据）and Word analogy task（多国语言数据）</td>
-<td>English Wikipedia Dump（9种语言）</td>
 </tr>
 <tr>
 <td>cw2vec Learning Chinese Word Embeddings with Stroke n-gram Information（CW2VEC）</td>
@@ -262,7 +254,6 @@
 <td>AAAI</td>
 <td>Word2Vec,Glove(原论文已下载),CWE,GWE,JWE</td>
 <td>Word Similarity（wordsim-240 and wordsim-296）and Analogical Reasoning（Chen et al 2015）and Text Classification（Fudan Corpus）and Named Entity Recongnition（BosonNLP_NER_6C）,Qualitative Evaluation</td>
-<td>Chinese Wikipedia Dump on November 20,2016</td>
 </tr>
 <tr>
 <td>Radical enhanced chinese word embedding（RECWE）</td>
@@ -271,7 +262,6 @@
 <td>CCL</td>
 <td>word2vector，CWE，SCWE and JWE</td>
 <td>Word Similarity（wordsim-240 and wordsim-296）and Analogical Reasoning（Chen et al 2015）</td>
-<td>今日头条新闻数据</td>
 </tr>
 </tbody>
 </table>
