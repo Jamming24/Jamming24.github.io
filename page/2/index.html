@@ -142,38 +142,75 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-基于内容的推荐算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-tensorflow-gpu安装教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/12/基于内容的推荐算法/">基于内容的推荐算法</a>
+      <a class="article-title" href="/2019/02/02/tensorflow-gpu安装教程/">Win10环境下使用Anaconda3.5安装tensorflow-gpu教程</a>
     </h1>
   
 
         
-        <a href="/2018/06/12/基于内容的推荐算法/" class="archive-article-date">
-  	<time datetime="2018-06-12T06:39:15.614Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-12</time>
+        <a href="/2019/02/02/tensorflow-gpu安装教程/" class="archive-article-date">
+  	<time datetime="2019-02-02T02:54:51.122Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Content-based-Recommendations"><a href="#Content-based-Recommendations" class="headerlink" title="Content-based Recommendations"></a>Content-based Recommendations</h2><p>###CB的优点：</p>
-<pre><code>用户之间的独立性（User Independence）：既然每个用户的profile都是依据他本身对item的喜好获得的，自然就与他人的行为无关。而CF刚好相反，CF需要利用很多其他人的数据。CB的这种用户独立性带来的一个显著好处是别人不管对item如何作弊（比如利用多个账号把某个产品的排名刷上去）都不会影响到自己。
+        <h1 id="Win10环境下使用Anaconda3-5安装tensorflow-gpu教程"><a href="#Win10环境下使用Anaconda3-5安装tensorflow-gpu教程" class="headerlink" title="Win10环境下使用Anaconda3.5安装tensorflow-gpu教程"></a>Win10环境下使用Anaconda3.5安装tensorflow-gpu教程</h1><h2 id="版本组合-tensorflow-gpu-1-12-cudnn-7-3-1-CUDA-9-0，Pycharm任意版本"><a href="#版本组合-tensorflow-gpu-1-12-cudnn-7-3-1-CUDA-9-0，Pycharm任意版本" class="headerlink" title="版本组合:tensorflow-gpu==1.12, cudnn==7.3.1, CUDA==9.0，Pycharm任意版本"></a>版本组合:tensorflow-gpu==1.12, cudnn==7.3.1, CUDA==9.0，Pycharm任意版本</h2><h2 id="文章末尾给出了-tensorflow，CUDA，cudnn，python-之间对应的版本号"><a href="#文章末尾给出了-tensorflow，CUDA，cudnn，python-之间对应的版本号" class="headerlink" title="文章末尾给出了 tensorflow，CUDA，cudnn，python 之间对应的版本号"></a>文章末尾给出了 tensorflow，CUDA，cudnn，python 之间对应的版本号</h2><h2 id="文件网盘链接："><a href="#文件网盘链接：" class="headerlink" title="文件网盘链接："></a>文件网盘链接：</h2><h2 id="Anaconda3-5：https-pan-baidu-com-s-1x9jrmKf8Wp7LKw42FbihOw"><a href="#Anaconda3-5：https-pan-baidu-com-s-1x9jrmKf8Wp7LKw42FbihOw" class="headerlink" title="Anaconda3.5：https://pan.baidu.com/s/1x9jrmKf8Wp7LKw42FbihOw"></a>Anaconda3.5：<a href="https://pan.baidu.com/s/1x9jrmKf8Wp7LKw42FbihOw" target="_blank" rel="noopener">https://pan.baidu.com/s/1x9jrmKf8Wp7LKw42FbihOw</a></h2><h2 id="CUDA9-0：https-pan-baidu-com-s-1V1ChbS3CGOsOq9dEr-dPxg"><a href="#CUDA9-0：https-pan-baidu-com-s-1V1ChbS3CGOsOq9dEr-dPxg" class="headerlink" title="CUDA9.0：https://pan.baidu.com/s/1V1ChbS3CGOsOq9dEr_dPxg"></a>CUDA9.0：<a href="https://pan.baidu.com/s/1V1ChbS3CGOsOq9dEr_dPxg" target="_blank" rel="noopener">https://pan.baidu.com/s/1V1ChbS3CGOsOq9dEr_dPxg</a></h2><p>本安装教程没有使用Anaconda中虚拟环境，所以相对来说安装比较简单，在安装过程中的cudnn是可以通过conda自动安装的，并不需要去官网下载。</p>
+<h3 id="第一步-安装CUDA9-0"><a href="#第一步-安装CUDA9-0" class="headerlink" title="第一步 安装CUDA9.0"></a>第一步 安装CUDA9.0</h3><p>双击运行CUDA9.0的安装包，一直点同意直到安装即可，并没有值得注意的事项。<br><img src="https://i.imgur.com/wJXqzQY.png" alt=""></p>
+<p>安装完成后打开cmd控制台，输入命令：nvcc -V 能够显示cuda版本即说明安装成功<br><img src="https://i.imgur.com/k3AcqgM.png" alt=""></p>
+<h3 id="第二步-安装Anaconda3-5"><a href="#第二步-安装Anaconda3-5" class="headerlink" title="第二步 安装Anaconda3.5"></a>第二步 安装Anaconda3.5</h3><p>双击运行安装，自己选择安装文件夹，然后图三两项都勾选（好像不勾选问题也不大），点击Install开始安装。</p>
+<p><img src="https://i.imgur.com/TF6RMMg.png" alt=""></p>
+<p><img src="https://i.imgur.com/FEb1ElZ.png" alt=""></p>
+<p><img src="https://i.imgur.com/Lj8owoc.png" alt=""></p>
+<p>安装完成后打开cmd控制台，输入命令：conda -V 能够正常显示版本即是安装成功</p>
+<p><img src="https://i.imgur.com/WAMOKPt.png" alt=""></p>
+<p>接下来打开Anaconda Prompt 输入命令：conda install tensorflow-gpu，接下来就会自动安装tensorflow-gpu以及所需要的所有依赖包。</p>
+<p><img src="https://i.imgur.com/o8xJmVl.png" alt=""></p>
+<p><img src="https://i.imgur.com/YMx8hQo.png" alt=""></p>
+<p><img src="https://i.imgur.com/I3hJE5H.png" alt=""></p>
+<p><img src="https://i.imgur.com/up9kIrd.png" alt=""></p>
+<p><img src="https://i.imgur.com/IYdY1qu.png" alt=""></p>
+<p>显示安装完成</p>
+<p>接下来使用Pycharm集成开发环境使用tensorflow工具包，Pycharm安装流程因为太过简单，所以这里就不在赘述，直接说环境配置。本教程中无需单独安装Python解释器，直接使用Anaconda自带的解释器即可，因为你单独安装过高版本的python解释器，也不一定兼容tensorflow的当前版本。</p>
+<p>点击File-&gt;Settings</p>
+<p><img src="https://i.imgur.com/Lxn9vfq.png" alt=""></p>
+<p>会弹出以下窗口，然后点击Project Interpreter-&gt;Conda Environment-&gt;Existing environment,然后选择Anaconda安装文件夹下的python.exe文件</p>
+<p><img src="https://i.imgur.com/Y5JBSC2.png" alt=""></p>
+<p><img src="https://i.imgur.com/E0aVnTC.png" alt=""></p>
+<p>然后点击确定，退出设置界面。</p>
+<h3 id="第三步-运行测试代码"><a href="#第三步-运行测试代码" class="headerlink" title="第三步 运行测试代码"></a>第三步 运行测试代码</h3><p><img src="https://i.imgur.com/uCGVjro.png" alt=""></p>
+<p>显示计算设备为：GTX1080Ti 说明安装成功。</p>
+<p>测试代码如下:</p>
+<pre><code># -*- coding:utf-8 -*-
+import os
+os.environ[&apos;TF_CPP_MIN_LOG_LEVEL&apos;] = &apos;2&apos;
 
-好的可解释性（Transparency）：如果需要向用户解释为什么推荐了这些产品给他，你只要告诉他这些产品有某某属性，这些属性跟你的品味很匹配等等。
+import tensorflow as tf
 
-新的item可以立刻得到推荐（New Item Problem）：只要一个新item加进item库，它就马上可以被推荐，被推荐的机会和老的item是一致的。而CF对于新item就很无奈，只有当此新item被某些用户喜欢过（或打过分），它才可能被推荐给其他用户。所以，如果一个纯CF的推荐系统，新加进来的item就永远不会被推荐:( 。
-</code></pre><p>CB的缺点：</p>
-<pre><code>item的特征抽取一般很难（Limited Content Analysis）：如果系统中的item是文档（如个性化阅读中），那么我们现在可以比较容易地使用信息检索里的方法来“比较精确地”抽取出item的特征。但很多情况下我们很难从item中抽取出准确刻画item的特征，比如电影推荐中item是电影，社会化网络推荐中item是人，这些item属性都不好抽。其实，几乎在所有实际情况中我们抽取的item特征都仅能代表item的一些方面，不可能代表item的所有方面。这样带来的一个问题就是可能从两个item抽取出来的特征完全相同，这种情况下CB就完全无法区分这两个item了。比如如果只能从电影里抽取出演员、导演，那么两部有相同演员和导演的电影对于CB来说就完全不可区分了。
+a = tf.test.is_built_with_cuda() # 判断CUDA是否可以用
 
-无法挖掘出用户的潜在兴趣（Over-specialization）：既然CB的推荐只依赖于用户过去对某些item的喜好，它产生的推荐也都会和用户过去喜欢的item相似。如果一个人以前只看与推荐有关的文章，那CB只会给他推荐更多与推荐相关的文章，它不会知道用户可能还喜欢数码。
-无法为新用户产生推荐（New User Problem）：新用户没有喜好历史，自然无法获得他的profile，所以也就无法为他产生推荐了。当然，这个问题CF也有。
-</code></pre>
+b = tf.test.is_gpu_available(cuda_only=False, min_cuda_compute_capability=None) # 判断GPU是否可以用
+
+print(a)
+print(b)
+
+a = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[2, 3], name=&apos;a&apos;)
+b = tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape=[3, 2], name=&apos;b&apos;)
+c = tf.matmul(a, b)
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+print(sess.run(c))
+</code></pre><h2 id="最后贴出tensorflow，CUDA，cudnn，python-之间对应的版本号"><a href="#最后贴出tensorflow，CUDA，cudnn，python-之间对应的版本号" class="headerlink" title="最后贴出tensorflow，CUDA，cudnn，python 之间对应的版本号"></a>最后贴出tensorflow，CUDA，cudnn，python 之间对应的版本号</h2><h3 id="window平台下："><a href="#window平台下：" class="headerlink" title="window平台下："></a>window平台下：</h3><p><img src="https://i.imgur.com/hVgu5ec.png" alt=""></p>
+<p><img src="https://i.imgur.com/n1QK5zK.png" alt=""></p>
+<h3 id="Linux平台下："><a href="#Linux平台下：" class="headerlink" title="Linux平台下："></a>Linux平台下：</h3><p><img src="https://i.imgur.com/MtmgtPm.png" alt=""></p>
+<p><img src="https://i.imgur.com/3LHzdv8.png" alt=""></p>
+
       
 
       
@@ -185,7 +222,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/12/基于内容的推荐算法/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/02/02/tensorflow-gpu安装教程/">展开全文 >></a>
         </p>
       
 
@@ -217,7 +254,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 

@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Jamming blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
 <meta property="og:site_name" content="Jamming blog">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -142,155 +142,73 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-中文词向量论文思路简述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-推荐算法介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/08/中文词向量论文思路简述/">中文词向量论文思路简述</a>
+      <a class="article-title" href="/2018/04/24/推荐算法介绍/">&lt;&lt;推荐系统实践&gt;&gt;核心算法简介</a>
     </h1>
   
 
         
-        <a href="/2019/02/08/中文词向量论文思路简述/" class="archive-article-date">
-  	<time datetime="2019-02-08T09:19:49.951Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-08</time>
+        <a href="/2018/04/24/推荐算法介绍/" class="archive-article-date">
+  	<time datetime="2018-04-24T04:08:06.541Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="中文词向量论文思路简述"><a href="#中文词向量论文思路简述" class="headerlink" title="中文词向量论文思路简述"></a>中文词向量论文思路简述</h1><h2 id="一、中文词向量论文baseline以及评价指标"><a href="#一、中文词向量论文baseline以及评价指标" class="headerlink" title="一、中文词向量论文baseline以及评价指标"></a>一、中文词向量论文baseline以及评价指标</h2><p>最近在做中文词向量的研究，阅读了9篇关于中文词向量的论文，并且对这9篇论文的核心思路，训练数据，评价指标，baseline，发表年份，作者单位做了统计和整理，于是写下此篇博文，作为对这一阶段的学习成果的总结。</p>
-<table>
+        <h2 id="Recommendation"><a href="#Recommendation" class="headerlink" title="Recommendation"></a>Recommendation</h2><h1 id="1-推荐系统介绍"><a href="#1-推荐系统介绍" class="headerlink" title="1.推荐系统介绍"></a>1.推荐系统介绍</h1><p>随着互联网时代的兴起，各种与人们生活息息相关的商品和信息呈现爆炸式的增长。每天在互联网产生的信息不计其数，人们面临着严重的信息的过载，即使搜素引擎可以帮助人们在海量的信息中得到自己想要的信息，但是搜索引擎也只是能满足人们的显性需求（就是用户知道自己想要什么），但是在另一方面，人们对信息和商品也存在这隐形需求（就是用户不知道自己可能会喜欢，或者想要的东西）。这部分需求无法通过搜索引擎来满足，于是搜索引擎的孪生兄弟推荐引擎应运而生，推荐引擎旨在帮助用户发现自己潜在感兴趣或者喜欢信息和商品。推荐系统的本质是通过一定的方式将用户和物品联系起来。在推荐引擎方面行动最早，研究最深也是在电商领域（比如亚马逊）和新闻领域（比如今日头条）。精准的个性化推荐系统能挖掘出用户潜在的购买欲望，帮助电商平台卖出更多的商品，并最终转化为可观的利润。</p>
+<h1 id="2-推荐系统的核心算法-：基于邻域的算法"><a href="#2-推荐系统的核心算法-：基于邻域的算法" class="headerlink" title="2.推荐系统的核心算法 ：基于邻域的算法"></a>2.推荐系统的核心算法 ：基于邻域的算法</h1><p>基于邻域的算法是推荐系统中最基本的算法，该算法不仅在学术界有深入的研究，而且在工业界也得到了广泛的应用。基于邻域的算法分为两大类，一类是基于用户的协同过滤算法，简称UserCF；另一类是基于物品（项）的协同过滤算法，简称ItemCF。看到这里，你可能会感到疑惑，为什么推荐系统的基础算法带有“协同”和“过滤”两个词？基于用户的协同过滤算法作为推荐系统中最古老的算法，在1992被提出，最初是被用在邮件过滤系统，1994年被GroupLens用于新闻过滤，之后才被用在推荐系统当中，也就是说，协同过滤算法最开始起源于过滤系统，这就是名字当中为什么带有“过滤”一词的原因。</p>
+<h2 id="2-1基于用户的协同过滤算法"><a href="#2-1基于用户的协同过滤算法" class="headerlink" title="2.1基于用户的协同过滤算法"></a>2.1基于用户的协同过滤算法</h2><p>基于用户的协同过滤算法核心思想类似一句俗语：物以类聚，人以群分。推荐引擎通过大量的用户行为日志来计算用户与用户之间的相似性。举例说明，例如用户A买了三本书：《机器学习》，《信息检索导论》，《统计学习方法》，而用户B也买了三本书：《信息检索导论》，《统计学习方法》，《计算机组成原理》由于用户A与用户B之间购买行为当中有两本书是相同的，《信息检索导论》和《统计学习方法》，所以我们暂且认为用户A和用户B具有较高的相似度（在实际算法实现中，计算用户相似度的方法很多），那么用户A喜欢的书用户B也有可能喜欢，所以在用户B的推荐列表里面可以把《机器学习》添加进去。<br>从上面的描述中可以看到，基于用户的协同过滤算法包括两个步骤：</p>
+<p>(1)找到和目标用户兴趣相似的用户；<br>(2)找到这个集合中用户喜欢，但是目标用户没有购买并且浏览过的物品；</p>
+<p>协同过滤算法主要是通过用户的行为计算用户之间的兴趣相似度。给定用户<strong><em>u</em></strong>和用户<strong><em>v</em></strong>，令<strong><em>N(u)</em></strong>表示用户<strong><em>u</em></strong>曾经购买过商品，令<strong><em>N(v)</em></strong>表示用户<strong><em>v</em></strong>曾经购买过商品。那么。我们可以通过计算<strong><em>Jaccard</em></strong>系数来简单的表示用户<strong><em>u</em></strong>和用户<strong><em>v</em></strong>之间的兴趣相似度：<br><img src="https://i.imgur.com/pTk4LOn.png" alt=""></p>
+<p>在计算用户之间的相似度过程中，如果采用上述的计算方法，在用户量非常大情况下会非常的消耗时间，所以一般的解决方式是，通过建立物品到用户的倒排表（具体实现过程我会在以后详述）。对于没有购买过相同物品的用户，在计算的时候予以跳过，节省时间和内存。</p>
+<p>对于基于UserCF的协同过滤算法，在计算用户与用户之间的相似这一部分会有较大的改进空间，如果想进一步提升对用户的分类效果可以采用计算cos值或者用机器学习（逻辑回归）的方法来计算用户之间的相似度，这样会使推荐结果更加精准。</p>
+<p>在基于UserCF的推荐算法中，唯一需要调节的参数就是k，即为每个用户选取前k个与他相似度高的用户进行计算，然后推荐那K个用户感兴趣的商品。</p>
+<h2 id="2-2基于项（物品）的协同过滤算法"><a href="#2-2基于项（物品）的协同过滤算法" class="headerlink" title="2.2基于项（物品）的协同过滤算法"></a>2.2基于项（物品）的协同过滤算法</h2><p>基于物品的协同过滤算法是业界应用最多的算法。在亚马逊，Netflix，Hulu，YouTube的基础算法都是该算法。基于物品的协同过滤算法核心思想是给用户推荐与用户喜欢商品类似的商品。比如我在某猫上买了一台笔记本电脑，在推荐商品栏就会出现键盘膜，散热支架等物品，因为刚刚买过电脑的人可能还需要这些周边产品。<br>那基于ItemCF的推荐算法也包括两个步骤：<br>(1)计算商品与商品之间的相似度；<br>(2)给用户推荐与用户喜欢商品相似的物品；<br>那么我们该如何计算物品与物品之间的相似度呢？最简单的一种方法就是利用用户行为信息。用户U购买过A商品的同时也购买商品B，用户B在购买商品B的同时也购买了商品A，商品A和B总是被不同用户同时购买，那我们可以认为这两种物品是有一定的相关性的。在积累了大量用户行为数据之后就可以对物品与物品之间进行一个相似度的计算。最后存到矩阵对应的位置当中。</p>
+<p>在计算物品与物品之间的相似度的过程中可以采用与UserCF类似的计算方式，如Jaccard系数或者cos值等，但是基于ItemCF的推荐算法在计算相似度的过程中需要生产一个非常占用内存空间的矩阵，这就对运行推荐系统的有一定的硬件要求。所以，一般在评测或者比赛当中，ItemCF并不是很受参赛选手青睐。<br>在计算物品相似度以后，我们会根据用户对购买过商品的喜爱程度结合物品之间的相似程度计算一个得分，最后取TopN对用户进行推荐。<br>在基于ItemCF的推荐算法中，同样需要调节参数k进行优化，这里的K就变成了与用户喜爱物品最相似的前k个商品。具体计算过程如下图：</p>
+<p><img src="https://i.imgur.com/8AHJ5wE.png" alt="计算示例"></p>
+<h2 id="2-3-UserCF与ItemCF之间的比较"><a href="#2-3-UserCF与ItemCF之间的比较" class="headerlink" title="2.3 UserCF与ItemCF之间的比较"></a>2.3 UserCF与ItemCF之间的比较</h2><table>
 <thead>
 <tr>
-<th>论文标题</th>
-<th>发表年份</th>
-<th>作者单位</th>
-<th>发表在期刊或者会议</th>
-<th>baseline</th>
-<th>评价指标以及数据</th>
-<th>训练数据</th>
+<th style="text-align:center"></th>
+<th style="text-align:center">UserCF</th>
+<th style="text-align:center">ItemCF</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Component-Enhanced Chinese Character Embeddings</td>
-<td>2015</td>
-<td>香港理工大学</td>
-<td>发表于EMNLP</td>
-<td>Word2Vector（CBOW和SkipGram）</td>
-<td>Word Similarity（哈工大的E-TC）和Text Classification（腾讯新闻数据）</td>
-<td>Chinese Wikipedia Dump</td>
+<td style="text-align:center">性能</td>
+<td style="text-align:center">适用于用户较少的场景，如果用户较多，计算量会非常大</td>
+<td style="text-align:center">使用与物品较少的情况，如果物品较多（比如电商平台），计算代价会很大</td>
 </tr>
 <tr>
-<td>Joint Learning of Character and Word Embeddings（CWE）</td>
-<td>2015</td>
-<td>清华大学</td>
-<td>发表于IJCAI2015</td>
-<td>CBOW，Skipgram和Glove</td>
-<td>Word Similarity（wordsim-240 and wordsim-296）和Analogical Reasoning（清华大学人工创建的）</td>
-<td>The People’s Daily</td>
+<td style="text-align:center">领域</td>
+<td style="text-align:center">时效性强，用户个性化兴趣不是特别明显的领域，比如新闻推荐</td>
+<td style="text-align:center">长尾物品丰富，用户个性化需求强烈的领域</td>
 </tr>
 <tr>
-<td>Improve Chinese Word Embeddings by Exploiting Internal Structure（SCWE）</td>
-<td>2016</td>
-<td>中国科学技术大学</td>
-<td>NAACL-HLT</td>
-<td>CBOW和CWE</td>
-<td>Word Similarity（wordsim-240 and wordsim-296）and Text Classification（Fudan Corpus）</td>
-<td>Chinese Wikipedia Dump and English Wikipedia Dump</td>
+<td style="text-align:center">实时性</td>
+<td style="text-align:center">用户有新行为不一定会造成推荐结果立即变化</td>
+<td style="text-align:center">用户有新行为，推荐结果可以立即变化</td>
 </tr>
 <tr>
-<td>Multi-Granularity Chinese Word Embedding（MGE）</td>
-<td>2016</td>
-<td>中国科学院信息工程研究所</td>
-<td>EMNLP</td>
-<td>CBOW和CWE</td>
-<td>Word Similarity（wordsim-240 and wordsim-296）and Analogical Reasoning（Chen et al 2015），case study</td>
-<td>Chinese Wikipedia Dump</td>
+<td style="text-align:center">冷启动</td>
+<td style="text-align:center">新用户用户行为较少的情况下，无法立即进行个性化推荐，所以需要每隔一段时间计算一次</td>
+<td style="text-align:center">新用户一旦产生用户行为，就可以给他们推荐相关的商品</td>
 </tr>
 <tr>
-<td>Learning Chinese Word Representations From Glyphs Of Characters(GWE)</td>
-<td>2017</td>
-<td>台湾大学</td>
-<td>EMNLP</td>
-<td>CBOW，Skipgram和CWE</td>
-<td>Word Similarity（wordsim-240 and wordsim-296 and SL-999）and Analogical Reasoning（Chen et al 2015），case study</td>
-<td>Central News Agency daily Newspaper（1991-2002）</td>
-</tr>
-<tr>
-<td>Joint Embeddings of Chinese Words, Characters, and Fine-grained Subcharacter Components（JWE）</td>
-<td>2017</td>
-<td>香港科技大学</td>
-<td>EMNLP</td>
-<td>CBOW，CWE和MGE</td>
-<td>Word Similarity（wordsim-240 and wordsim-296）and Analogical Reasoning（Chen et al 2015），case study</td>
-<td>Chinese Wikipedia Dump and HTTPCN</td>
-</tr>
-<tr>
-<td>Enriching Word Vectors with Subword Information</td>
-<td>2017</td>
-<td>Facebook AI Lab</td>
-<td>ACL</td>
-<td>CBOW和skipgram</td>
-<td>Word Similarity（多国语言数据）and Word analogy task（多国语言数据）</td>
-<td>English Wikipedia Dump（9种语言）</td>
-</tr>
-<tr>
-<td>cw2vec Learning Chinese Word Embeddings with Stroke n-gram Information（CW2VEC）</td>
-<td>2018</td>
-<td>蚂蚁金服人工智能部</td>
-<td>AAAI</td>
-<td>Word2Vec,Glove(原论文已下载),CWE,GWE,JWE</td>
-<td>Word Similarity（wordsim-240 and wordsim-296）and Analogical Reasoning（Chen et al 2015）and Text Classification（Fudan Corpus）and Named Entity Recongnition（BosonNLP_NER_6C）,Qualitative Evaluation</td>
-<td>Chinese Wikipedia Dump on November 20,2016</td>
-</tr>
-<tr>
-<td>Radical enhanced chinese word embedding（RECWE）</td>
-<td>2018</td>
-<td>电子科技大学</td>
-<td>CCL</td>
-<td>word2vector，CWE，SCWE and JWE</td>
-<td>Word Similarity（wordsim-240 and wordsim-296）and Analogical Reasoning（Chen et al 2015）</td>
-<td>今日头条新闻数据</td>
+<td style="text-align:center">推荐理由</td>
+<td style="text-align:center">很难提供令用户信服的解释</td>
+<td style="text-align:center">利用用户的历史给用户进行推荐解释，具有较高的说服力</td>
 </tr>
 </tbody>
 </table>
-<h2 id="二、中文词向量论文思路概述"><a href="#二、中文词向量论文思路概述" class="headerlink" title="二、中文词向量论文思路概述"></a>二、中文词向量论文思路概述</h2><h3 id="1-Component-Enhanced-Chinese-Character-Embeddings"><a href="#1-Component-Enhanced-Chinese-Character-Embeddings" class="headerlink" title="1. Component-Enhanced Chinese Character Embeddings"></a>1. Component-Enhanced Chinese Character Embeddings</h3><p>核心思想:在训练过程中引入部首信息，其中C代表上下文词，Z代表目标词，E代表部首列表。在训练过程中将字符向量和字符对应的部首向量结合到一起进行训练。</p>
-<p><img src="https://i.imgur.com/jqv97Ct.png" alt=""></p>
-<h3 id="2-Joint-Learning-of-Character-and-Word-Embeddings"><a href="#2-Joint-Learning-of-Character-and-Word-Embeddings" class="headerlink" title="2. Joint Learning of Character and Word Embeddings"></a>2. Joint Learning of Character and Word Embeddings</h3><p>核心思想:将CBOW中的词向量和词中的字符向量的结合作为词的新向量，结合方式有相加和连接两种方式；其中对于字符向量的训练又分为三种方式，包括基于位置的Character Embedding，基于聚类的Character Embedding和基于无参数聚类Character Embedding。</p>
-<p>计算公式:</p>
-<p>$$x_j = w_j⊕\frac{1}{N_j} \sum_{i=0}^{N_j} c_k $$</p>
-<p>其中\(w_j\)表示\(x_j\)的Word Embedding，N表示词中的字符数量，\(c_k\)表示字符c的Embedding，⊕表示构成操作（如相加或者拼接）。论文中其他结合字符聚类的方法都是基于此公式的变形和升级。</p>
-<p><img src="https://i.imgur.com/cW3y0Jw.png" alt=""></p>
-<p><img src="https://i.imgur.com/LqmSxEy.png" alt=""></p>
-<h3 id="3-Improve-Chinese-Word-Embeddings-by-Exploiting-Internal-Structure"><a href="#3-Improve-Chinese-Word-Embeddings-by-Exploiting-Internal-Structure" class="headerlink" title="3. Improve Chinese Word Embeddings by Exploiting Internal Structure"></a>3. Improve Chinese Word Embeddings by Exploiting Internal Structure</h3><p>本文作者认为CWE模型（文章2）存在的最大问题是对于中文词中的每个汉字训练的向量都采用相同都权重进行相加，而实际上同一中文词中的不同字符对词意的影响是不同的，于是提出（Similarity-Based Character—Enhanced Word Embedding，SCWE）<br>实现步骤：首先用中文分词工具对中文进行分词，然后将中文词翻译成英文词，接下来通过得到的英文词使用CBOW模型训练得到英文词向量（CBOW的训练效果应该会影响性能），然后计算中文词中的每个字符与中文词的相似度系数（应该是根据英文词向量计算相似度系数），相似度系数作为字符向量前面的权重值。接下来进行合并计算。具体公式如下：</p>
-<p><img src="https://i.imgur.com/wRDWm25.png" alt=""></p>
-<p><img src="https://i.imgur.com/G8TlvWd.png" alt=""></p>
-<p>此模型在WordSim-240和WordSim-296均有明显提高。</p>
-<h3 id="4-Multi-Granularity-Chinese-Word-Embedding"><a href="#4-Multi-Granularity-Chinese-Word-Embedding" class="headerlink" title="4.Multi-Granularity Chinese Word Embedding"></a>4.Multi-Granularity Chinese Word Embedding</h3><p>核心思想:使用更加细粒度的character和radical(部首)来增强词表示。</p>
-<p><img src="https://i.imgur.com/19bYPRI.png" alt=""></p>
-<p>通过引入偏旁部首等信息，对词进行更细粒度的拆分，能够增强词表示的质量，通过公式对偏旁部首的向量进行不同权重的配置，最后融合到一起为中文词的新向量。在训练过程中，在CWE模型的基础上加入目标词的偏旁向量。计算公式如下：</p>
-<p><img src="https://i.imgur.com/d7cbweF.png" alt=""></p>
-<p>其中W表示词的向量，C表示词中字符的向量，R表示目标词的部首向量。⊕表示构成操作（如相加或者拼接），本模型与CWE模型都是采用向量相加操作。并且仅仅是在wordSim-239测试集合中性能有显著提高，在WordSim-293性能还不如CBOW模型（CWE也不如CBOW）。</p>
-<h3 id="5-Learning-Chinese-Word-Representations-From-Glyphs-Of-Characters"><a href="#5-Learning-Chinese-Word-Representations-From-Glyphs-Of-Characters" class="headerlink" title="5.Learning Chinese Word Representations From Glyphs Of Characters"></a>5.Learning Chinese Word Representations From Glyphs Of Characters</h3><p>2017发表在EMNLP 作者：台湾大学李宏毅<br>核心思想：通过图形字符来增强词表示<br>实现思路：首先通过卷积神经网络对汉字的图片提取特征，结合CBOW模型进行训练，模型如下图所示。</p>
-<p><img src="https://i.imgur.com/l3uUZHf.png" alt=""></p>
-<p>计算公式：</p>
-<p><img src="https://i.imgur.com/lFDzstH.png" alt=""></p>
-<p>其中w表示词向量，C表示字符向量，G表示通过卷积神经网络提取到的特征向量。最终实验结果并没有大幅度提高性能。</p>
-<h3 id="6-Joint-Embeddings-of-Chinese-Words-Characters-and-Fine-grained-Subcharacter-Components"><a href="#6-Joint-Embeddings-of-Chinese-Words-Characters-and-Fine-grained-Subcharacter-Components" class="headerlink" title="6.Joint Embeddings of Chinese Words, Characters, and Fine-grained Subcharacter Components"></a>6.Joint Embeddings of Chinese Words, Characters, and Fine-grained Subcharacter Components</h3><p>核心思想：通过对汉字字符进行更加细粒度的拆分来对中文词向量进行训练。比如“照”，以往的模型可以拆分为“昭”和“灬”，本文将其拆分为“日、刀、口、灬”，并将CBOW模型改进如下形式进行训练。损失函数为下面三部分的加和。其中W表示词向量，C表示词中字符对应的向量，S表示词的各个组成部分对应的向量（如“日、刀、口、灬”）。</p>
-<p><img src="https://i.imgur.com/IxJ51jF.png" alt=""></p>
-<h3 id="7-Enriching-Word-Vectors-with-Subword-Information"><a href="#7-Enriching-Word-Vectors-with-Subword-Information" class="headerlink" title="7.Enriching Word Vectors with Subword Information"></a>7.Enriching Word Vectors with Subword Information</h3><p>本论文为Facebook AI Lab发表的论文，这里介绍本篇论文是因为后面的cw2vec借鉴了本文的思想。本篇论文在词的前后增加“&lt;”和“&gt;”字符，然后抽取其n-gram特征，<where>表示成&lt;wh,whe,her,ere,re&gt;,结合Skip-gram进行训练，会得到&lt;wh,whe,her,ere,re&gt;每个元素的向量， 最后将其加和就是<where>的词向量。</where></where></p>
-<h3 id="8-cw2vec-Learning-Chinese-Word-Embeddings-with-Stroke-n-gram-Information"><a href="#8-cw2vec-Learning-Chinese-Word-Embeddings-with-Stroke-n-gram-Information" class="headerlink" title="8.cw2vec Learning Chinese Word Embeddings with Stroke n-gram Information"></a>8.cw2vec Learning Chinese Word Embeddings with Stroke n-gram Information</h3><p>本文作者认为汉字中的字符有可能对汉字的意思表示不充分甚至无法表示汉字的意思，比如“智”这个字，其中“日”就不反应任何信息，所以直接将汉字拆分为为笔画进行表示。本文将汉字看做是由五种笔划组成：</p>
-<p><img src="https://i.imgur.com/xrKo6Rs.png" alt=""></p>
-<p>下图是将“大人”表示为五种笔划组成的例子。</p>
-<p><img src="https://i.imgur.com/ze8AhXZ.png" alt=""></p>
-<p>将“大人”转换成数字“13434”之后，结合n-gram进行训练。训练思想类似于上文。当采用3-gram的时候，会得到（134,343,434）这样的组合，经过模型训练后会得到（134,343,434）三组向量，求和之后就表示“大人”一词的词向量。具体的实现方式采用Word2Vector中Skip-gram结合负采样的优化方式进行训练。在训练过程中，本论文更改了CBOW中的损失函数。</p>
-<h3 id="9-Radical-Enhanced-Chinese-Word-Embedding-CCL2018"><a href="#9-Radical-Enhanced-Chinese-Word-Embedding-CCL2018" class="headerlink" title="9.Radical Enhanced Chinese Word Embedding(CCL2018)"></a>9.Radical Enhanced Chinese Word Embedding(CCL2018)</h3><p>本模型是基于CBOW模型的改进版本，RECWE模型分为两个部分，一部分是Word prediction模块，另一部分是Sub-information prediction模块，Word prediction模块类似于一个简易版本的CBOW模型，输入层是目标词的上下文，Sub-information与Word prediction模块并行存在，其中包括目标词以及目标词上下文词的字符，偏旁，字符组成字符的向量表示。由于在Sub-information模块中，也存在CWE中一词多意、后者字符无法表示词意等问题，所以在这一模块中加入了待预测词的字符，部首和其他组成部分来解决这个问题。</p>
-<p><img src="https://i.imgur.com/dwVT7gd.png" alt=""></p>
 
       
 
@@ -303,7 +221,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/08/中文词向量论文思路简述/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/04/24/推荐算法介绍/">展开全文 >></a>
         </p>
       
 
@@ -335,7 +253,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
     </nav>
   
 
